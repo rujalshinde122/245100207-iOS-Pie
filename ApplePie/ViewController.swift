@@ -8,6 +8,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var treeImageView: UIImageView!
+    @IBOutlet var turnLabel: UILabel!
     @IBOutlet var correctWordLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     
@@ -15,7 +16,14 @@ class ViewController: UIViewController {
     
     var listOfWords = ["buccaneer", "swift", "glorious", "incandescent", "bug", "program"]
     let incorrectMovesAllowed = 7
-    var totalWins = 0 {
+    
+    var player1Wins = 0 {
+        didSet {
+            newRound()
+        }
+    }
+    
+    var player2Wins = 0 {
         didSet {
             newRound()
         }
@@ -27,6 +35,7 @@ class ViewController: UIViewController {
         }
     }
     
+    var roundStartingPlayer = 1
     var currentGame: Game!
     
     override func viewDidLoad() {
@@ -37,11 +46,13 @@ class ViewController: UIViewController {
     func newRound() {
         if !listOfWords.isEmpty {
             let newWord = listOfWords.removeFirst()
-            currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
+            currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [], currentPlayer: roundStartingPlayer)
+            roundStartingPlayer = (roundStartingPlayer == 1) ? 2 : 1
             enableLetterButtons(true)
             updateUI()
         } else {
             enableLetterButtons(false)
+            turnLabel.text = "Game Over"
         }
     }
     
@@ -59,7 +70,8 @@ class ViewController: UIViewController {
         let wordWithSpacing = letters.joined(separator: " ")
         correctWordLabel.text = wordWithSpacing
         
-        scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
+        turnLabel.text = "\(currentGame.currentPlayerName)'s Turn"
+        scoreLabel.text = "Player 1: \(player1Wins) Wins | Player 2: \(player2Wins) Wins | Losses: \(totalLosses)"
         treeImageView.image = UIImage(named: "Tree \(currentGame.incorrectMovesRemaining)")
     }
 
@@ -75,7 +87,11 @@ class ViewController: UIViewController {
         if currentGame.incorrectMovesRemaining == 0 {
             totalLosses += 1
         } else if currentGame.word == currentGame.formattedWord {
-            totalWins += 1
+            if currentGame.currentPlayer == 1 {
+                player1Wins += 1
+            } else {
+                player2Wins += 1
+            }
         } else {
             updateUI()
         }

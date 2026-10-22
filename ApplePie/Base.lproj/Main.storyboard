@@ -448,14 +448,20 @@
                                                     <constraint firstItem="XAL-ZC-Hvl" firstAttribute="width" secondItem="XAL-ZC-Hvl" secondAttribute="height" id="yAY-6T-tAC"/>
                                                 </constraints>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1's Turn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2t-Ur-nLbl">
+                                                <rect key="frame" x="519.5" y="165" width="155" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-Vs-dM4">
-                                                <rect key="frame" x="561.5" y="165" width="71" height="50"/>
+                                                <rect key="frame" x="561.5" y="220" width="71" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-6l-Ewg">
-                                                <rect key="frame" x="573" y="220" width="48" height="50"/>
+                                                <rect key="frame" x="573" y="275" width="48" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -478,6 +484,7 @@
                         <outlet property="correctWordLabel" destination="vW4-Vs-dM4" id="vMI-Jr-rRc"/>
                         <outlet property="scoreLabel" destination="Mnr-6l-Ewg" id="dW4-dq-Jfb"/>
                         <outlet property="treeImageView" destination="I3b-WJ-t6e" id="yAF-4m-KcA"/>
+                        <outlet property="turnLabel" destination="P2t-Ur-nLbl" id="kTx-Ur-nOut"/>
                         <outletCollection property="letterButtons" destination="nUn-6X-OYy" collectionClass="NSMutableArray" id="eR2-Xe-LyE"/>
                         <outletCollection property="letterButtons" destination="BAy-34-VSd" collectionClass="NSMutableArray" id="wKZ-4X-Kk9"/>
                         <outletCollection property="letterButtons" destination="efC-dL-gMs" collectionClass="NSMutableArray" id="X0z-Eg-4dd"/>

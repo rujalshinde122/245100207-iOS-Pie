@@ -9,6 +9,11 @@ struct Game {
     var word: String
     var incorrectMovesRemaining: Int
     var guessedLetters: [Character]
+    var currentPlayer: Int = 1
+    
+    var currentPlayerName: String {
+        return "Player \(currentPlayer)"
+    }
     
     var formattedWord: String {
         var guessedWord = ""
@@ -26,6 +31,8 @@ struct Game {
         guessedLetters.append(letter)
         if !word.contains(letter) {
             incorrectMovesRemaining -= 1
+            // Switch turn to the other player on incorrect guess
+            currentPlayer = (currentPlayer == 1) ? 2 : 1
         }
     }
 }
