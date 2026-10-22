@@ -19,9 +19,39 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="csk-BD-YOT">
                                 <rect key="frame" x="0.0" y="24" width="1194" height="790"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tree 0" translatesAutoresizingMaskIntoConstraints="NO" id="I3b-WJ-t6e" userLabel="Tree Image View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-b6-xG3" userLabel="Trees Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="1194" height="520"/>
-                                    </imageView>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a1b-P1-tree" userLabel="Player 1 Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="587" height="520"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Player 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-P1-name" userLabel="Player 1 Label">
+                                                        <rect key="frame" x="253.5" y="0.0" width="80" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tree 7" translatesAutoresizingMaskIntoConstraints="NO" id="img-P1-tree" userLabel="Player 1 Tree Image View">
+                                                        <rect key="frame" x="0.0" y="30.5" width="587" height="489.5"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a2b-P2-tree" userLabel="Player 2 Stack View">
+                                                <rect key="frame" x="607" y="0.0" width="587" height="520"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Player 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-P2-name" userLabel="Player 2 Label">
+                                                        <rect key="frame" x="252" y="0.0" width="83" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tree 7" translatesAutoresizingMaskIntoConstraints="NO" id="img-P2-tree" userLabel="Player 2 Tree Image View">
+                                                        <rect key="frame" x="0.0" y="30.5" width="587" height="489.5"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rna-7C-0Jf">
                                         <rect key="frame" x="0.0" y="520" width="1194" height="270"/>
                                         <subviews>
@@ -482,8 +512,11 @@
                     </view>
                     <connections>
                         <outlet property="correctWordLabel" destination="vW4-Vs-dM4" id="vMI-Jr-rRc"/>
+                        <outlet property="player1Label" destination="lbl-P1-name" id="conn-P1-lbl"/>
+                        <outlet property="player1TreeImageView" destination="img-P1-tree" id="conn-P1-tree"/>
+                        <outlet property="player2Label" destination="lbl-P2-name" id="conn-P2-lbl"/>
+                        <outlet property="player2TreeImageView" destination="img-P2-tree" id="conn-P2-tree"/>
                         <outlet property="scoreLabel" destination="Mnr-6l-Ewg" id="dW4-dq-Jfb"/>
-                        <outlet property="treeImageView" destination="I3b-WJ-t6e" id="yAF-4m-KcA"/>
                         <outlet property="turnLabel" destination="P2t-Ur-nLbl" id="kTx-Ur-nOut"/>
                         <outletCollection property="letterButtons" destination="nUn-6X-OYy" collectionClass="NSMutableArray" id="eR2-Xe-LyE"/>
                         <outletCollection property="letterButtons" destination="BAy-34-VSd" collectionClass="NSMutableArray" id="wKZ-4X-Kk9"/>
@@ -519,9 +552,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tree 0" width="600" height="945"/>
+        <image name="Tree 7" width="600" height="945"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
