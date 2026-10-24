@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  ApplePie
-//
-//  Created by Rujal on 22/10/26.
-//
-
 import UIKit
 
 @main
